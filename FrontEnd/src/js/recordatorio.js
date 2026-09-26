@@ -227,4 +227,4 @@ document.addEventListener("DOMContentLoaded", () => {
   wireUpReset();
   wireUpEnviar();
   wireUpDebugClear();
-});
+}); 
