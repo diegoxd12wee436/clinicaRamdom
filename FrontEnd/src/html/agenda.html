@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenda · clinicaRamdom</title>
+<link rel="stylesheet" href="/src/css/agenda.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ===== Sidebar (inyectado por sidebar.js) ===== -->
+    <aside class="sidebar" id="sidebar-root"></aside>
+
+    <!-- ===== Main content ===== -->
+    <main class="main main--agenda">
+
+      <label class="search search--full" for="search-input">
+        <input id="search-input" type="search" placeholder="Buscar Paciente o Cita">
+        <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M17 17l-3.6-3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </label>
+
+      <section class="agenda-panel">
+
+        <div class="agenda-toolbar">
+          <div class="agenda-nav">
+            <button type="button" class="icon-btn" id="btn-prev" aria-label="Semana anterior">‹</button>
+            <button type="button" class="icon-btn" id="btn-next" aria-label="Semana siguiente">›</button>
+            <button type="button" class="pill-btn" id="btn-hoy">Hoy</button>
+            <span class="agenda-range" id="agenda-range">7 sept. — 13 sept. 2026</span>
+          </div>
+
+          <div class="agenda-toolbar-right">
+            <div class="view-toggle" role="group" aria-label="Vista de calendario">
+              <button type="button" class="view-btn is-active" data-view="semana">Semana</button>
+              <button type="button" class="view-btn" data-view="mes">Mes</button>
+            </div>
+            <button type="button" class="btn-accent" id="btn-nueva-cita">
+              <span aria-hidden="true">+</span> Nueva cita
+            </button>
+          </div>
+        </div>
+
+        <ul class="legend" id="legend">
+          <!-- rendered by agenda.js from STATUS -->
+        </ul>
+
+        <div class="calendar" id="calendar">
+          <!-- header row + hour grid / month grid rendered by agenda.js -->
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== Modal: Nueva cita ===== -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h3 id="modal-title">Nueva cita</h3>
+        <button type="button" class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+      </div>
+
+      <form id="form-nueva-cita" novalidate>
+        <div class="field">
+          <label for="input-paciente">Paciente</label>
+          <input id="input-paciente" name="paciente" type="text" placeholder="Nombre del paciente" required>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="input-fecha">Fecha</label>
+            <input id="input-fecha" name="fecha" type="date" required>
+          </div>
+          <div class="field">
+            <label for="input-hora">Hora</label>
+            <select id="input-hora" name="hora" required></select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="input-motivo">Motivo de la visita</label>
+          <input id="input-motivo" name="motivo" type="text" placeholder="Ej. Control, consulta general...">
+        </div>
+
+        <div class="field">
+          <label for="input-estado">Estado</label>
+          <select id="input-estado" name="estado"></select>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-ghost" id="modal-cancel">Cancelar</button>
+          <button type="submit" class="btn-accent">Guardar cita</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/src/js/sidebar.js"></script>
+  <script src="/src/js/agenda.js"></script>
+</body>
+</html>

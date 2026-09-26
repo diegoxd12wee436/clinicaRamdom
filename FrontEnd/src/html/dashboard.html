@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DashBoard · clinicaRamdom</title>
+<link rel="stylesheet" href="/src/css/dash.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ===== Sidebar (inyectado por sidebar.js) ===== -->
+    <aside class="sidebar" id="sidebar-root"></aside>
+
+    <!-- ===== Main content ===== -->
+    <main class="main">
+
+      <header class="topbar">
+        <div class="topbar-heading">
+          <h1>DashBoard <span class="dot" aria-hidden="true"></span></h1>
+          <p class="subtitle">Vista General de consultas medicas</p>
+        </div>
+
+        <label class="search" for="search-input">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M17 17l-3.6-3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input id="search-input" type="search" placeholder="Buscar Paciente o Cita">
+        </label>
+      </header>
+
+      <section class="greeting">
+        <div>
+          <h2>Buenos dias doctor <span data-field="doctor-name">{name}</span></h2>
+          <p class="today">Hoy <span data-field="today-date">{date formato MM/dd/yy}</span></p>
+        </div>
+        <button type="button" class="btn-primary" id="btn-nueva-cita">Nueva cita</button>
+      </section>
+
+      <section class="stats" aria-label="Resumen del día">
+        <article class="stat-card stat-card--purple">
+          <p class="stat-label">Citas para hoy</p>
+          <p class="stat-value" data-field="citas-hoy">{NUM}</p>
+        </article>
+        <article class="stat-card stat-card--green">
+          <p class="stat-label">Atendidas</p>
+          <p class="stat-value" data-field="atendidas">{NUM}</p>
+        </article>
+        <article class="stat-card stat-card--purple">
+          <p class="stat-label">Pendientes</p>
+          <p class="stat-value" data-field="pendientes">{NUM}</p>
+        </article>
+        <article class="stat-card stat-card--red">
+          <p class="stat-label">No asistio</p>
+          <p class="stat-value" data-field="no-asistio">{NUM}</p>
+        </article>
+      </section>
+
+      <section class="agenda">
+        <div class="agenda-header">
+          <h3>Agenda del dia</h3>
+          <a href="#" class="agenda-link">Ver semana <span aria-hidden="true">→</span></a>
+        </div>
+
+        <ul class="agenda-list" id="agenda-list">
+          <!-- Rows are rendered by script.js from APPOINTMENTS -->
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="/src/js/sidebar.js"></script>
+  <script src="/src/js/dash.js"></script>
+</body>
+</html>
