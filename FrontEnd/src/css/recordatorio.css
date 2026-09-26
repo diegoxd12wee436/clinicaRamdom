@@ -1,0 +1,289 @@
+/* =========================================================
+   clinicaRamdom — Recordatorios
+   Se apoya en los tokens de agenda.css.
+   ========================================================= */
+
+.main--recordatorio { gap: 20px; }
+
+/* ===== Hero superior ===== */
+
+.rec-hero {
+  background: linear-gradient(120deg, #fdf3ea 0%, #f5f7fb 55%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 20px 24px;
+}
+
+.rec-eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-400);
+  font-weight: 600;
+}
+
+.rec-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rec-bell {
+  width: 22px;
+  height: 22px;
+  color: #ea6c1f;
+  flex-shrink: 0;
+}
+
+.rec-hero .subtitle { margin-top: 4px; }
+
+/* ===== Lista de tarjetas ===== */
+
+.rec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rec-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+.rec-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  flex-wrap: wrap;
+}
+
+.rec-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #f0a53c, #ea6c1f);
+}
+
+.rec-info { flex: 1; min-width: 180px; }
+
+.rec-nombre { margin: 0; font-weight: 700; font-size: 0.95rem; }
+
+.rec-tipo { margin: 1px 0 0; font-size: 0.8rem; color: var(--ink-400); }
+
+.rec-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--ink-600);
+}
+
+.rec-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rec-meta svg { width: 13px; height: 13px; color: var(--ink-400); flex-shrink: 0; }
+
+.rec-acciones { display: flex; gap: 10px; flex-shrink: 0; }
+
+.btn-whatsapp,
+.btn-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-whatsapp { background: var(--green); color: #fff; }
+.btn-whatsapp:hover { background: #1a8a56; }
+
+.btn-email { background: var(--navy-900); color: #fff; }
+.btn-email:hover { background: var(--navy-800); }
+
+.btn-whatsapp svg,
+.btn-email svg { width: 13px; height: 13px; }
+
+/* ===== Toggle de mensajes preparados ===== */
+
+.rec-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg);
+  border: none;
+  border-top: 1px solid var(--line);
+  padding: 10px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-600);
+  cursor: pointer;
+}
+
+.rec-toggle:hover { color: var(--ink-900); }
+
+.rec-toggle-arrow {
+  width: 10px;
+  height: 10px;
+  transition: transform 0.15s ease;
+}
+
+.rec-card.is-open .rec-toggle-arrow { transform: rotate(180deg); }
+
+.rec-mensajes {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--line);
+}
+
+.rec-card.is-open .rec-mensajes { display: grid; }
+
+.rec-mensaje-label {
+  margin: 0 0 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.rec-mensaje-label--whatsapp { color: var(--green); }
+.rec-mensaje-label--email { color: var(--ink-900); }
+
+.rec-mensaje-box {
+  width: 100%;
+  min-height: 120px;
+  margin: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 12px 14px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ink-900);
+  resize: vertical;
+}
+
+.rec-mensaje-box:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.12);
+  background: var(--card);
+}
+
+.rec-mensaje-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.rec-mensaje-botones { display: flex; gap: 8px; }
+
+.btn-restablecer {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-600);
+  border-radius: var(--radius-s);
+  padding: 6px 12px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-restablecer:hover { background: var(--bg); }
+
+.btn-enviar {
+  border: none;
+  border-radius: var(--radius-s);
+  padding: 6px 14px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-enviar--whatsapp { background: var(--green); }
+.btn-enviar--whatsapp:hover { background: #1a8a56; }
+.btn-enviar--email { background: var(--navy-900); }
+.btn-enviar--email:hover { background: var(--navy-800); }
+
+.rec-estado {
+  font-size: 0.72rem;
+  color: var(--ink-400);
+}
+
+.rec-estado.is-enviado { color: var(--badge-green-fg); font-weight: 600; }
+
+/* ===== Panel de debug ===== */
+
+.rec-debug {
+  background: #10162a;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+.rec-debug-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #aab1cc;
+  border-bottom: 1px solid #232c4a;
+}
+
+.rec-debug-head button {
+  background: transparent;
+  border: 1px solid #2a3560;
+  color: #aab1cc;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.rec-debug-head button:hover { background: #182246; }
+
+.rec-debug-body {
+  max-height: 160px;
+  overflow-y: auto;
+  padding: 10px 16px;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: #8fe0a8;
+  line-height: 1.7;
+}
+
+.rec-debug-line { white-space: pre-wrap; word-break: break-word; }
+.rec-debug-line--warn { color: #f0a53c; }
+.rec-debug-empty { color: #5b6478; }
+
+@media (max-width: 760px) {
+  .rec-mensajes { grid-template-columns: 1fr; }
+}

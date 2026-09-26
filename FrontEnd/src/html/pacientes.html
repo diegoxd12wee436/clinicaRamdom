@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pacientes · clinicaRamdom</title>
+<link rel="stylesheet" href="/src/css/agenda.css">
+<link rel="stylesheet" href="/src/css/pacientes.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ===== Sidebar (inyectado por sidebar.js) ===== -->
+    <aside class="sidebar" id="sidebar-root"></aside>
+
+    <!-- ===== Main content ===== -->
+    <main class="main main--pacientes">
+
+      <header class="topbar">
+        <div class="topbar-heading">
+          <h1>Pacientes</h1>
+          <p class="subtitle">Historial clínico de tus pacientes</p>
+        </div>
+      </header>
+
+      <section class="pacientes-toolbar">
+        <label class="search search--full" for="search-input">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M17 17l-3.6-3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input id="search-input" type="search" placeholder="Buscar por nombre, documento, teléfono...">
+        </label>
+        <p class="pacientes-count"><span data-field="pacientes-count">0</span> resultados</p>
+        <button type="button" class="btn-accent" id="btn-nuevo-paciente">
+          <span aria-hidden="true">+</span> Nuevo paciente
+        </button>
+      </section>
+
+      <section class="pacientes-panel">
+        <table class="pacientes-table">
+          <thead>
+            <tr>
+              <th>Paciente</th>
+              <th>Documento</th>
+              <th>Edad</th>
+              <th>Contacto</th>
+              <th>Alergias</th>
+              <th>Consultas</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="pacientes-body">
+            <!-- filas renderizadas por pacientes.js -->
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== Modal: Nuevo / editar paciente ===== -->
+  <div class="modal-backdrop" id="modal-paciente" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-titulo">Nuevo paciente</h3>
+        <button type="button" class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+      </div>
+
+      <form id="form-paciente">
+        <input type="hidden" id="f-id">
+
+        <div class="field">
+          <label for="f-name">Nombre completo</label>
+          <input id="f-name" type="text" required>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-cedula">Cédula</label>
+            <input id="f-cedula" type="text" placeholder="V-25.487.109" required>
+          </div>
+          <div class="field">
+            <label for="f-fecha">Fecha de nacimiento</label>
+            <input id="f-fecha" type="date" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-numero">Teléfono</label>
+            <input id="f-numero" type="text">
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" type="email">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-alergias">Alergias conocidas</label>
+          <input id="f-alergias" type="text" placeholder="Separadas por coma">
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-ghost" id="modal-cancelar">Cancelar</button>
+          <button type="submit" class="btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/src/js/sidebar.js"></script>
+  <script src="/src/js/pacientes.js"></script>
+</body>
+</html>

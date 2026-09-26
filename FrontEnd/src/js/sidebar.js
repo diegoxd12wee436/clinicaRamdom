@@ -24,7 +24,7 @@ class Sidebar {
     },
     {
       label: "Pacientes",
-      href: "#",
+      href: "pacientes.html",
       icon: '<circle cx="10" cy="6.5" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 17c0-3 2.7-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
     },
     {
@@ -34,7 +34,7 @@ class Sidebar {
     },
     {
       label: "Recordatorio",
-      href: "#",
+      href: "recordatorio.html",
       icon: '<path d="M5 8a5 5 0 0 1 10 0c0 3 1 4.5 1.5 5.5H3.5C4 12.5 5 11 5 8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 16a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
     },
     {
