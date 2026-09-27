@@ -1,0 +1,244 @@
+/* =========================================================
+   clinicaRamdom — Login
+   ========================================================= */
+
+:root {
+  --navy-900: #0e1730;
+  --navy-800: #141f3d;
+  --page-bg: #080c18;
+
+  --orange: #f4a769;
+  --orange-dark: #e8935a;
+  --teal: #3fb6c2;
+
+  --white: #ffffff;
+  --muted: #9aa4bf;
+  --line: rgba(255, 255, 255, 0.12);
+  --red: #ff6b6b;
+
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--page-bg);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+/* ---------- tarjeta ---------- */
+
+.login-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  background: var(--navy-900);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 40px 36px 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.login-card h1 {
+  margin: 0 0 28px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.field {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--white);
+}
+
+.req { color: var(--orange); }
+
+.field input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--navy-800);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.field input::placeholder { color: var(--muted); }
+
+.field input:focus {
+  border-color: var(--teal);
+}
+
+.field.has-error input {
+  border-color: var(--red);
+}
+
+.error-msg {
+  display: block;
+  min-height: 16px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--red);
+}
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap input {
+  padding-right: 40px;
+}
+
+.toggle-pass {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  opacity: 0.7;
+  color: var(--white);
+}
+
+.toggle-pass:hover { opacity: 1; }
+
+.forgot-link {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: underline;
+  margin: 4px 0 22px;
+}
+
+.forgot-link:hover { color: var(--teal); }
+
+/* ---------- botón ---------- */
+
+.btn-login {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 999px;
+  background: var(--orange);
+  color: var(--navy-900);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-login:hover { background: var(--orange-dark); }
+
+.btn-login:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(14, 23, 48, 0.3);
+  border-top-color: var(--navy-900);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.form-msg {
+  min-height: 18px;
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--red);
+}
+
+.form-msg.success { color: var(--teal); }
+
+/* ---------- decoraciones ---------- */
+
+.decor { position: absolute; z-index: 1; pointer-events: none;}
+
+.lines { top: 0; left: 0; transform: rotate(35deg);}
+
+
+
+.dash {
+  width: 34px;
+  height: 3px;
+  background: var(--white);
+  border-radius: 2px;
+}
+
+.diamond {
+  width: 20px;
+  height: 20px;
+  background: var(--teal);
+  transform: rotate(45deg);
+  border-radius: 3px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.dash-top     { top: 14%; right: 18%; }
+.diamond-top  { top: 8%;  right: 10%; }
+.circle-top   { top: 15%; right: 8%; }
+
+.dash-bottom    { bottom: 8%;  left: 30%; }
+.diamond-bottom { bottom: 10%; left: 45%; }
+.circle-bottom  { bottom: 8%;  right: 32%; }
+
+@media (max-width: 480px) {
+  .login-card { padding: 32px 24px 26px; }
+  .decor { display: none; }
+}

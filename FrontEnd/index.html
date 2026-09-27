@@ -1,18 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar Sesión · clinicaRamdom</title>
+<link rel="stylesheet" href="/src/css/login.css">
 </head>
 <body>
-    
-    <div class="box">
-        <p>Log In</p>
-        
+
+  <div class="login-page">
+
+    <!-- decoraciones -->
+    <div class="decor lines" aria-hidden="true">
+      <svg viewBox="0 0 120 160" width="220" height="260">
+        <path d="M10,0 C40,40 -10,80 20,160" stroke="#f4a769" stroke-width="2" fill="none"/>
+        <path d="M25,0 C55,40 5,80 35,160"  stroke="#f4a769" stroke-width="2" fill="none"/>
+        <path d="M40,0 C70,40 20,80 50,160" stroke="#f4a769" stroke-width="2" fill="none"/>
+      </svg>
     </div>
+
+    <div class="decor dash dash-top" aria-hidden="true"></div>
+    <div class="decor diamond diamond-top" aria-hidden="true"></div>
+    <div class="decor circle circle-top" aria-hidden="true"></div>
+
+    <div class="decor circle circle-bottom" aria-hidden="true"></div>
+    <div class="decor diamond diamond-bottom" aria-hidden="true"></div>
+    <div class="decor dash dash-bottom" aria-hidden="true"></div>
+
+    <!-- tarjeta de login -->
+    <main class="login-card">
+      <h1>Iniciar Sesión</h1>
+
+      <form id="login-form" novalidate>
+
+        <div class="field">
+          <label for="email">Correo <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="tu@correo.com" autocomplete="email">
+          <span class="error-msg" id="email-error"></span>
+        </div>
+
+        <div class="field">
+          <label for="password">Contraseña <span class="req">*</span></label>
+          <div class="password-wrap">
+            <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password">
+            <button type="button" class="toggle-pass" id="toggle-pass" aria-label="Mostrar contraseña">👁</button>
+          </div>
+          <span class="error-msg" id="password-error"></span>
+        </div>
+
+        <a href="/src/html/recuperar.html" class="forgot-link">Recuperar contraseña</a>
+
+        <button type="submit" class="btn-login" id="btn-login">
+          <span class="btn-text">Log In</span>
+          <span class="spinner" hidden></span>
+        </button>
+
+        <p class="form-msg" id="form-msg" role="alert"></p>
+
+      </form>
+    </main>
+
+  </div>
+
+  <script src="/src/js/login.js"></script>
 </body>
 </html>
-
-
-<a href="src/html/dashboard.html">hola </a>
