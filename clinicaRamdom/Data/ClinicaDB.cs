@@ -6,8 +6,9 @@ namespace clinicaRamdom.Data
     public class ClinicaDB : DbContext
     {
         public ClinicaDB(DbContextOptions<ClinicaDB> db) :base(db) { }
-        
+
         //las clases 
+        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Consulta> Consultas { get; set; }
         public DbSet<Diagnostico> Diagnosticos { get; set; }
         public DbSet<Doctor> Doctores { get; set; }

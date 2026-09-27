@@ -16,6 +16,7 @@ namespace clinicaRamdom.Models
 
 
         //constructor
+        public Paciente() { }
         public Paciente(int id, string name, string cedula, string alergiaConocidas, string num, string email, DateOnly fechaNac)
         {
             Id = id;

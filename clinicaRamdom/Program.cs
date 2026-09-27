@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using clinicaRamdom.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,13 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+// Sirve la carpeta FrontEnd (hermana de este proyecto) como sitio estático,
+// para que el JS llame a /api/... en el MISMO origen y no haya problemas de CORS.
+var frontendPath = Path.Combine(builder.Environment.ContentRootPath, "..", "FrontEnd");
+var frontendProvider = new PhysicalFileProvider(frontendPath);
+app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = frontendProvider });
+app.UseStaticFiles(new StaticFileOptions { FileProvider = frontendProvider });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

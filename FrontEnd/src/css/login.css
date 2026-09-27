@@ -1,5 +1,5 @@
 /* =========================================================
-   clinicaRamdom — Login
+   clinicaRamdom — Auth (login / registro / recuperar / cambiar)
    ========================================================= */
 
 :root {
@@ -62,12 +62,29 @@ body {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
+.view[hidden] { display: none; }
+
 .login-card h1 {
-  margin: 0 0 28px;
+  margin: 0 0 8px;
   text-align: center;
   font-size: 24px;
   font-weight: 700;
   color: var(--white);
+}
+
+.subtitle {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.subtitle strong { color: var(--white); }
+
+.view h1 + form,
+.view h1 + p + form {
+  margin-top: 20px;
 }
 
 .field {
@@ -150,6 +167,57 @@ body {
 
 .forgot-link:hover { color: var(--teal); }
 
+/* ---------- link para cambiar de vista ---------- */
+
+.switch-link {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.switch-link a {
+  color: var(--teal);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.switch-link a:hover { color: var(--orange); }
+
+/* ---------- casillas de código (OTP) ---------- */
+
+.otp-group {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.otp-box {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 12px 0 !important;
+}
+
+.otp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.otp-footer .error-msg { margin: 0; }
+
+.resend-link {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.resend-link:hover { color: var(--teal); }
+
 /* ---------- botón ---------- */
 
 .btn-login {
@@ -167,10 +235,13 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  transition: background 0.15s ease, opacity 0.15s ease;
+  transition: background 0.15s ease, opacity 0.15s ease, box-shadow 0.2s ease;
 }
 
-.btn-login:hover { background: var(--orange-dark); }
+.btn-login:hover {
+  background: var(--orange-dark);
+  box-shadow: 0 0 18px rgba(244, 167, 105, 0.45);
+}
 
 .btn-login:disabled {
   opacity: 0.7;
@@ -202,11 +273,13 @@ body {
 
 /* ---------- decoraciones ---------- */
 
-.decor { position: absolute; z-index: 1; pointer-events: none;}
+.decor { position: absolute; z-index: 1; pointer-events: none; }
 
-.lines { top: 0; left: 0; transform: rotate(35deg);}
-
-
+.lines {
+  top: -20px;
+  left: -20px;
+  transform: rotate(35deg);
+}
 
 .dash {
   width: 34px;
@@ -230,13 +303,26 @@ body {
   background: var(--orange);
 }
 
-.dash-top     { top: 14%; right: 18%; }
-.diamond-top  { top: 8%;  right: 10%; }
-.circle-top   { top: 15%; right: 8%; }
+.dash-top    { top: 14%; right: 18%; animation: float 3.4s ease-in-out infinite; }
+.circle-top  { top: 15%; right: 8%;  animation: float 3.7s ease-in-out infinite 0.6s; }
 
-.dash-bottom    { bottom: 8%;  left: 30%; }
-.diamond-bottom { bottom: 10%; left: 45%; }
-.circle-bottom  { bottom: 8%;  right: 32%; }
+.dash-bottom   { bottom: 8%; left: 30%;  animation: float 3.6s ease-in-out infinite 0.2s; }
+.circle-bottom { bottom: 8%; right: 32%; animation: float 3.3s ease-in-out infinite 0.8s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* el diamante ya trae rotate(45deg) como base, así que su animación
+   propia mantiene esa rotación y solo mueve el translateY */
+.diamond-top    { top: 8%;  right: 10%; animation: float-diamond 4s ease-in-out infinite 0.3s; }
+.diamond-bottom { bottom: 10%; left: 45%; animation: float-diamond 4.2s ease-in-out infinite 0.5s; }
+
+@keyframes float-diamond {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(-8px); }
+}
 
 @media (max-width: 480px) {
   .login-card { padding: 32px 24px 26px; }

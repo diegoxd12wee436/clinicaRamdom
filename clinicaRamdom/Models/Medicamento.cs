@@ -12,8 +12,9 @@
 
         public string? Descripcion { get; set; } //ahi va frecuencia dias  y todo 
         public string? Dosis { get; set; }
-        
+
         //Constructor
+        public Medicamento() { }
         public Medicamento(int id ,string name, string descripcion ,string dosis, int recetaid)
         {
             Id = id;

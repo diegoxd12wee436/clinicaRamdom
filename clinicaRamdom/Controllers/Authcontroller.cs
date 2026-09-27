@@ -1,7 +1,5 @@
-﻿using clinicaRamdom.Controllers.clinicaRamdom.Models.Dtos;
-using clinicaRamdom.Data;
+﻿using clinicaRamdom.Data;
 using clinicaRamdom.Models;
-using clinicaRamdom.Models.clinicaRamdom.Models;
 using clinicaRamdom.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

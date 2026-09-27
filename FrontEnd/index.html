@@ -12,7 +12,7 @@
 
     <!-- decoraciones -->
     <div class="decor lines" aria-hidden="true">
-      <svg viewBox="0 0 120 160" width="220" height="260">
+      <svg viewBox="0 0 120 160" width="200" height="260">
         <path d="M10,0 C40,40 -10,80 20,160" stroke="#f4a769" stroke-width="2" fill="none"/>
         <path d="M25,0 C55,40 5,80 35,160"  stroke="#f4a769" stroke-width="2" fill="none"/>
         <path d="M40,0 C70,40 20,80 50,160" stroke="#f4a769" stroke-width="2" fill="none"/>
@@ -27,37 +27,151 @@
     <div class="decor diamond diamond-bottom" aria-hidden="true"></div>
     <div class="decor dash dash-bottom" aria-hidden="true"></div>
 
-    <!-- tarjeta de login -->
+    <!-- tarjeta -->
     <main class="login-card">
-      <h1>Iniciar Sesión</h1>
 
-      <form id="login-form" novalidate>
+      <!-- ============ LOGIN ============ -->
+      <section class="view" data-view="login">
+        <h1>Iniciar Sesión</h1>
 
-        <div class="field">
-          <label for="email">Correo <span class="req">*</span></label>
-          <input type="email" id="email" name="email" placeholder="tu@correo.com" autocomplete="email">
-          <span class="error-msg" id="email-error"></span>
-        </div>
-
-        <div class="field">
-          <label for="password">Contraseña <span class="req">*</span></label>
-          <div class="password-wrap">
-            <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password">
-            <button type="button" class="toggle-pass" id="toggle-pass" aria-label="Mostrar contraseña">👁</button>
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="login-email">Correo <span class="req">*</span></label>
+            <input type="email" id="login-email" placeholder="tu@correo.com" autocomplete="email">
+            <span class="error-msg" data-error="login-email"></span>
           </div>
-          <span class="error-msg" id="password-error"></span>
-        </div>
 
-        <a href="/src/html/recuperar.html" class="forgot-link">Recuperar contraseña</a>
+          <div class="field">
+            <label for="login-password">Contraseña <span class="req">*</span></label>
+            <div class="password-wrap">
+              <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
+              <button type="button" class="toggle-pass" data-toggle="login-password" aria-label="Mostrar contraseña">👁</button>
+            </div>
+            <span class="error-msg" data-error="login-password"></span>
+          </div>
 
-        <button type="submit" class="btn-login" id="btn-login">
-          <span class="btn-text">Log In</span>
-          <span class="spinner" hidden></span>
-        </button>
+          <a href="#" class="forgot-link" data-goto="forgot">Recuperar contraseña</a>
 
-        <p class="form-msg" id="form-msg" role="alert"></p>
+          <button type="submit" class="btn-login">
+            <span class="btn-text">Log In</span>
+            <span class="spinner" hidden></span>
+          </button>
 
-      </form>
+          <p class="form-msg" role="alert"></p>
+          <p class="switch-link">¿Aún no tienes cuenta? <a href="#" data-goto="register">Regístrate</a></p>
+        </form>
+      </section>
+
+      <!-- ============ REGISTRO ============ -->
+      <section class="view" data-view="register" hidden>
+        <h1>Crear Cuenta</h1>
+
+        <form id="register-form" novalidate>
+          <div class="field">
+            <label for="reg-nombre">Nombre <span class="req">*</span></label>
+            <input type="text" id="reg-nombre" placeholder="Tu nombre">
+            <span class="error-msg" data-error="reg-nombre"></span>
+          </div>
+
+          <div class="field">
+            <label for="reg-email">Correo <span class="req">*</span></label>
+            <input type="email" id="reg-email" placeholder="tu@correo.com" autocomplete="email">
+            <span class="error-msg" data-error="reg-email"></span>
+          </div>
+
+          <div class="field">
+            <label for="reg-password">Contraseña <span class="req">*</span></label>
+            <div class="password-wrap">
+              <input type="password" id="reg-password" placeholder="••••••••" autocomplete="new-password">
+              <button type="button" class="toggle-pass" data-toggle="reg-password" aria-label="Mostrar contraseña">👁</button>
+            </div>
+            <span class="error-msg" data-error="reg-password"></span>
+          </div>
+
+          <div class="field">
+            <label for="reg-password2">Confirmar contraseña <span class="req">*</span></label>
+            <input type="password" id="reg-password2" placeholder="••••••••" autocomplete="new-password">
+            <span class="error-msg" data-error="reg-password2"></span>
+          </div>
+
+          <button type="submit" class="btn-login">
+            <span class="btn-text">Crear cuenta</span>
+            <span class="spinner" hidden></span>
+          </button>
+
+          <p class="form-msg" role="alert"></p>
+          <p class="switch-link">¿Ya tienes cuenta? <a href="#" data-goto="login">Inicia sesión</a></p>
+        </form>
+      </section>
+
+      <!-- ============ RECUPERAR (pide correo) ============ -->
+      <section class="view" data-view="forgot" hidden>
+        <h1>Recuperar Contraseña</h1>
+        <p class="subtitle">Ingresa tu correo y te enviaremos un código de 5 dígitos.</p>
+
+        <form id="forgot-form" novalidate>
+          <div class="field">
+            <label for="forgot-email">Correo <span class="req">*</span></label>
+            <input type="email" id="forgot-email" placeholder="tu@correo.com" autocomplete="email">
+            <span class="error-msg" data-error="forgot-email"></span>
+          </div>
+
+          <button type="submit" class="btn-login">
+            <span class="btn-text">Enviar código</span>
+            <span class="spinner" hidden></span>
+          </button>
+
+          <p class="form-msg" role="alert"></p>
+          <p class="switch-link"><a href="#" data-goto="login">Volver a iniciar sesión</a></p>
+        </form>
+      </section>
+
+      <!-- ============ CAMBIAR CONTRASEÑA (código + nueva) ============ -->
+      <section class="view" data-view="reset" hidden>
+        <h1>Cambiar Contraseña</h1>
+        <p class="subtitle">Hemos enviado un código al correo: <strong id="reset-email-display">—</strong></p>
+
+        <form id="reset-form" novalidate>
+          <div class="field">
+            <label>Código <span class="req">*</span></label>
+            <div class="otp-group" id="otp-group">
+              <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp="0">
+              <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp="1">
+              <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp="2">
+              <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp="3">
+              <input type="text" inputmode="numeric" maxlength="1" class="otp-box" data-otp="4">
+            </div>
+            <div class="otp-footer">
+              <span class="error-msg" data-error="reset-code"></span>
+              <a href="#" class="resend-link" id="resend-link">Re enviar</a>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="reset-password">Nueva contraseña <span class="req">*</span></label>
+            <div class="password-wrap">
+              <input type="password" id="reset-password" placeholder="••••••••" autocomplete="new-password">
+              <button type="button" class="toggle-pass" data-toggle="reset-password" aria-label="Mostrar contraseña">👁</button>
+            </div>
+            <span class="error-msg" data-error="reset-password"></span>
+          </div>
+
+          <div class="field">
+            <label for="reset-password2">Confirmar nueva contraseña <span class="req">*</span></label>
+            <input type="password" id="reset-password2" placeholder="••••••••" autocomplete="new-password">
+            <span class="error-msg" data-error="reset-password2"></span>
+          </div>
+
+          <button type="submit" class="btn-login">
+            <span class="btn-text">Cambiar</span>
+            <span class="spinner" hidden></span>
+          </button>
+
+          <p class="form-msg" role="alert"></p>
+          <p class="switch-link"><a href="#" data-goto="login">Volver a iniciar sesión</a></p>
+        </form>
+      </section>
+
     </main>
 
   </div>

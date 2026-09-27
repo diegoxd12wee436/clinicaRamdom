@@ -14,6 +14,7 @@
 
         public DateTimeOffset Fecha { get; set; }
 
+        public Diagnostico() { }   
         public Diagnostico(int id , Consulta con , string code ,string desc, string obs, DateTimeOffset fecha)
         {
             Id_consulta = id;

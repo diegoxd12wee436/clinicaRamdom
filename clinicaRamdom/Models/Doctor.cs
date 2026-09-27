@@ -11,7 +11,7 @@
         public string Cedula { get; set; }
         //tambien guardare uncolor para direfenciarlos en la agenda 
         public string ColorHex { get; set; } = "#3498db";
-
+        public Doctor() { }
 
         public Doctor(int id, string name ,string especialidad,string num,bool student ,string? email, string cedula )
         {

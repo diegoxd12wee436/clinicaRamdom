@@ -10,7 +10,7 @@
         public DateTimeOffset FechaEmision { get; set; }
         public string? DatosGenrales { get; set; } //reposo 3 dias ns etc
         public List<Medicamento> Medicamentos { get; set; } = new();
-
+        public Receta() { }
         public Receta(int id, Consulta consulta, DateTimeOffset fecha, string datosGenrales)
         {
             Id = id;
