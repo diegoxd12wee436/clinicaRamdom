@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Doctores · clinicaRamdom</title>
 <link rel="stylesheet" href="/src/css/agenda.css">
+   <style>
+     .dialog-doctor { border: none; border-radius: 16px; padding: 28px; width: min(440px, 92vw); box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+     .dialog-doctor::backdrop { background: rgba(5, 10, 25, .6); }
+     .dialog-doctor h2 { margin: 0 0 16px; }
+     .dialog-doctor label { display: block; margin-bottom: 12px; font-size: 14px; font-weight: 600; }
+     .dialog-doctor input[type="text"], .dialog-doctor input[type="email"] { width: 100%; box-sizing: border-box; margin-top: 4px; padding: 10px 12px; border: 1px solid #cfd6e4; border-radius: 8px; font: inherit; }
+     .dialog-doctor .dialog-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px; }
+     .dialog-doctor .dialog-error { color: #c0392b; font-size: 13px; min-height: 18px; margin: 0; }
+   </style>
 </head>
 <body>
 
@@ -60,6 +69,34 @@
   </div>
 
   <script src="/src/js/sidebar.js"></script>
+     <dialog id="dialog-doctor" class="dialog-doctor">
+     <form id="form-doctor" method="dialog">
+       <h2>Nuevo doctor</h2>
+
+       <label>Nombre
+         <input type="text" id="doc-name" required>
+       </label>
+       <label>Especialidad
+         <input type="text" id="doc-especialidad" required>
+       </label>
+       <label>Teléfono
+         <input type="text" id="doc-numero" required>
+       </label>
+       <label>Correo
+         <input type="email" id="doc-email">
+       </label>
+       <label>Cédula
+         <input type="text" id="doc-cedula" required>
+       </label>
+
+       <p class="dialog-error" id="doc-error"></p>
+
+       <div class="dialog-actions">
+         <button type="button" class="btn-accent" id="doc-cancelar" style="background:#8a94a8">Cancelar</button>
+         <button type="submit" class="btn-accent">Guardar</button>
+       </div>
+     </form>
+   </dialog>
   <script src="/src/js/doctores.js"></script>
 </body>
 </html>
