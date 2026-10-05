@@ -73,6 +73,23 @@ function renderDoctors(list) {
   document.querySelector('[data-field="doctores-count"]').textContent = DOCTORS.length;
 }
 
+const CEDULA_REGEX = /^\d{3}-\d{6}-\d{4}[A-Za-z]$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function isValidCedula(value) {
+  if (!CEDULA_REGEX.test(value)) return false;
+  const dd = Number(value.slice(4, 6));
+  const mm = Number(value.slice(6, 8));
+  const yy = Number(value.slice(8, 10));
+  if (mm < 1 || mm > 12 || dd < 1) return false;
+  // el año viene con 2 dígitos: se acepta si la fecha existe en 19yy o 20yy
+  const existe = (year) => {
+    const d = new Date(year, mm - 1, dd);
+    return d.getMonth() === mm - 1 && d.getDate() === dd;
+  };
+  return existe(1900 + yy) || existe(2000 + yy);
+}
+
 function wireUpActions() {
   const dialog = document.getElementById("dialog-doctor");
   const form = document.getElementById("form-doctor");
@@ -100,6 +117,19 @@ function wireUpActions() {
       email: document.getElementById("doc-email").value.trim() || null,
       cedula: document.getElementById("doc-cedula").value.trim(),
     };
+
+        if (!body.name || !body.especialidad || !body.numero || !body.cedula) {
+      errorBox.textContent = "Completa nombre, especialidad, teléfono y cédula.";
+      return;
+    }
+    if (body.email && !EMAIL_REGEX.test(body.email)) {
+      errorBox.textContent = "El correo no es válido. Debe llevar @ y un dominio, por ejemplo nombre@correo.com.";
+      return;
+    }
+    if (!isValidCedula(body.cedula)) {
+      errorBox.textContent = "La cédula no es válida. Formato: 000-DDMMAA-0000A.";
+      return;
+    }
 
     try {
       const res = await fetch("/api/Doctores", {

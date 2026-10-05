@@ -70,7 +70,7 @@
 
   <script src="/src/js/sidebar.js"></script>
      <dialog id="dialog-doctor" class="dialog-doctor">
-     <form id="form-doctor" method="dialog">
+    <form id="form-doctor" method="dialog" novalidate>
        <h2>Nuevo doctor</h2>
 
        <label>Nombre
@@ -86,7 +86,7 @@
          <input type="email" id="doc-email">
        </label>
        <label>Cédula
-         <input type="text" id="doc-cedula" required>
+         <input type="text" id="doc-cedula" placeholder="000-000000-0000A" required>
        </label>
 
        <p class="dialog-error" id="doc-error"></p>
