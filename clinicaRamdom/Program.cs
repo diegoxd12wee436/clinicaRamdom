@@ -9,10 +9,9 @@ builder.Services.AddDbContext<ClinicaDB>(db => db.UseSqlite(builder.Configuratio
 
 // Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
+builder.Services.AddControllers()
+    .AddJsonOptions(o => o.JsonSerializerOptions.ReferenceHandler =
+        System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
 var app = builder.Build();
 
 // Sirve la carpeta FrontEnd (hermana de este proyecto) como sitio estático,

@@ -23,13 +23,25 @@ namespace clinicaRamdom.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTimeOffset>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("PacienteId")
+                    b.Property<string>("Motivo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PacienteId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
 
                     b.HasIndex("PacienteId");
 
@@ -214,9 +226,21 @@ namespace clinicaRamdom.Migrations
 
             modelBuilder.Entity("clinicaRamdom.Models.Consulta", b =>
                 {
-                    b.HasOne("clinicaRamdom.Models.Paciente", null)
+                    b.HasOne("clinicaRamdom.Models.Doctor", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("clinicaRamdom.Models.Paciente", "Paciente")
                         .WithMany("Consultas")
-                        .HasForeignKey("PacienteId");
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Paciente");
                 });
 
             modelBuilder.Entity("clinicaRamdom.Models.Diagnostico", b =>
